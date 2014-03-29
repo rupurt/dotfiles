@@ -1,0 +1,26 @@
+# Unix
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
+alias l='ls -lah'
+alias ls='ls -G'
+alias ll='ls -al'
+alias lh='ls -Alh'
+
+# Git
+alias gst='git status -sb'
+alias gl='git l'
+
+# Rubygems
+alias gi='gem install'
+alias giv='gem install -v'
+
+# Rails
+alias rc='rails c'
+alias rs='rails s'
+alias rg='rails g'
+alias migrate='rake db:migrate db:test:prepare'
+alias rbgrep="grep --include='*.rb' $*"
+
+# Include custom aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

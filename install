@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -e
+
+here="$(cd "${0%/*}"; pwd)"
+
+exclude=(README.md)
+
+echo "INSTALLING dotfiles ${here} => ${HOME}"
+for file in "$here"/*; do
+  name="$(basename "$file")"
+
+  if [[ "README.md Brewfile install hooks" =~ $name ]]; then
+    continue
+  fi
+
+  if ! [[ -e ~/.$name ]]; then
+    echo "      + $name"
+    ln -sfh ${file} "${HOME}/.${name}"
+  else
+    echo " skip - $name"
+  fi
+done
+
+if [ -e "$here"/hooks/post-up ]; then
+  echo ''
+  echo '... running hooks/post-up'
+  bash "$here"/hooks/post-up
+fi

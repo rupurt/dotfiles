@@ -1,0 +1,24 @@
+[apply]
+  whitespace = nowarn
+[push]
+  default = current
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+[alias]
+  ca = commit --amend
+  co = checkout
+  st = status
+  wip = "git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"wip\""
+  unwip = git log -n 1 | grep -q -c wip && git reset HEAD~1
+  head = git log -n1
+  l = "!source ~/.githelpers && pretty_git_log"
+[core]
+  editor = /usr/bin/vim
+  excludesfile = ~/.gitignore
+[merge]
+  ff = only
+[include]
+  path = .gitconfig.local

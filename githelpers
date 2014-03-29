@@ -1,0 +1,20 @@
+#!/bin/bash
+
+HASH="%C(red)%h%C(reset)"
+TIME="%C(green)}%cD}%C(reset)"
+AUTHOR="%C(blue){%an{%C(reset)"
+REFS="%C(red)%d%C(reset)"
+SUBJECT="%s"
+
+FORMAT="$HASH $TIME $AUTHOR$REFS $SUBJECT"
+
+function pretty_git_log() {
+  git log --graph --date=short --pretty="tformat:$FORMAT" $* |
+  sed -Ee 's/origin/o/g' |
+  sed -Ee 's/staging-release/STG/g' |
+  sed -Ee 's/production-release/PROD/g' |
+  sed -Ee 's/tag: /t:/g' |
+  awk -F '}' '{ cmd="date -j -f \"%a, %d %b %Y %T %z\" \""$2"\" \"+%Y-%b-%d %p\""; cmd | getline convdate; close(cmd); print $1 convdate $3}' |
+  awk -F '{' "{ gsub(/ and /,\"-\",\$2); gsub(/[a-z ]+/,\"\",\$2); print \$0}" |
+  less -EFXRS
+}

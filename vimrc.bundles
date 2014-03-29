@@ -1,0 +1,67 @@
+if &compatible
+  set nocompatible
+end
+
+" vundle commands
+"
+" install? :BundleInstall
+" update? :BundleInstall!
+" clean? :PluginClean!
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+"
+" Colourschemes
+"
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+
+"
+" Rails & co.
+"
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'tpope/vim-abolish'
+
+"
+" File Support
+"
+Bundle 'tpope/vim-haml'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+
+"
+" General Editing
+"
+Bundle 'scrooloose/nerdtree'
+Bundle 'regreplop.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
+Bundle 'kana/vim-textobj-user'
+Bundle 'Julian/vim-textobj-variable-segment'
+Bundle 'kana/vim-textobj-line'
+Bundle 'thinca/vim-textobj-between'
+
+"
+" Searching & Replacing
+"
+Bundle 'kien/ctrlp.vim'
+Bundle 'epmatsw/ag.vim'
+Bundle 'Peeja/vim-cdo'
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+syntax on
+filetype plugin indent on
