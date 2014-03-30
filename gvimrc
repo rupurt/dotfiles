@@ -1,4 +1,4 @@
-set guifont=Monaco:h14
+set guifont=Inconsolata-dz:h14,Source\ Code\ Pro:h14,Monaco:h14
 
 " No audible bell
 set vb
