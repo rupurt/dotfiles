@@ -39,6 +39,11 @@ noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 
 
+" Markdown
+"
+let g:vim_markdown_folding_disabled=1
+
+
 " CTAGS
 "
 let g:Tlist_Ctags_Cmd='/usr/local/bin/ctags'

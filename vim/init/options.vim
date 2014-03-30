@@ -41,6 +41,10 @@ set laststatus=2   " always show staus line
 set incsearch      " incremental search
 set encoding=utf-8
 
+" Turn folding off for real, hopefully
+set foldmethod=manual
+set nofoldenable
+
 " Remember more commands and search history
 set history=1000
 
