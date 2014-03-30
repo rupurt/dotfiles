@@ -1,15 +1,12 @@
 set notimeout      " No command timeout
-set showcmd
 
 set expandtab
 set tabstop=2
-set autoindent
 set shiftwidth=2
 set softtabstop=2
 set number
 set numberwidth=4
 set nowrap
-set backspace=indent,eol,start
 
 set wildmode=list:longest,list:full
 set wildignore+=tags
@@ -36,30 +33,17 @@ set splitright     " add new window towards bottom
 set scrolloff=3    " scroll when the cursor is 3 lines from bottom
 set cursorline     " highlight current line
 
-set laststatus=2   " always show staus line
-
-set incsearch      " incremental search
-set encoding=utf-8
-
 " Turn folding off for real, hopefully
 set foldmethod=manual
 set nofoldenable
 
-" Remember more commands and search history
-set history=1000
-
 " Make searches case-sensitive only if they contain upper-case characters
 set smartcase
-
-" no prompt for file changes outside of vim
-set autoread
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" show the cursor position all the time
-set ruler
 
 " Turn folding off for real, hopefully
 set foldmethod=manual
