@@ -1,0 +1,80 @@
+# vim:ft=sh:
+
+parse_git_branch() {
+  git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# (\1)#'
+}
+
+parse_git_repo() {
+  basename `git rev-parse --show-toplevel`
+}
+
+git_repo_or_path() {
+  local repo=`git rev-parse --show-toplevel 2> /dev/null`
+  if [[ ! -e "${repo}" ]]; then
+    # TODO: this isn't as good as '\w' which include ~ for home
+    # local PathShort="\w"
+    echo -n $PWD
+  else
+    parse_git_repo
+  fi
+}
+
+function parse_git_dirty() {
+  if [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]]; then
+    echo 'DIRTY'
+  else
+    echo 'CLEAN'
+  fi
+}
+
+DULL=0
+BRIGHT=1
+
+FG_BLACK=30
+FG_RED=31
+FG_GREEN=32
+FG_YELLOW=33
+FG_BLUE=34
+FG_VIOLET=35
+FG_CYAN=36
+FG_WHITE=37
+
+FG_NULL=00
+
+BG_BLACK=40
+BG_RED=41
+BG_GREEN=42
+BG_YELLOW=43
+BG_BLUE=44
+BG_VIOLET=45
+BG_CYAN=46
+BG_WHITE=47
+
+BG_NULL=00
+
+##
+# ANSI Escape Commands
+##
+ESC="\033"
+NORMAL="$ESC[m"
+RESET="$ESC[${DULL};${FG_WHITE};${BG_NULL}m"
+
+BLACK="$ESC[${DULL};${FG_BLACK}m"
+RED="$ESC[${DULL};${FG_RED}m"
+GREEN="$ESC[${DULL};${FG_GREEN}m"
+YELLOW="$ESC[${DULL};${FG_YELLOW}m"
+BLUE="$ESC[${DULL};${FG_BLUE}m"
+VIOLET="$ESC[${DULL};${FG_VIOLET}m"
+CYAN="$ESC[${DULL};${FG_CYAN}m"
+WHITE="$ESC[${DULL};${FG_WHITE}m"
+
+export PS1="$NORMAL--- \u@$BLUE\h $GREEN\$(git_repo_or_path)$RED\$(parse_git_branch)$RESET\n$ "
+
+# TODO
+# - http://www.gnu.org/software/bash/manual/bashref.html#Printing-a-Prompt
+# - would like indication of changes on branch
+# SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
+# SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
+# SCM_GIT_CHAR="${bold_green}±${normal}"
+# SCM_SVN_CHAR="${bold_cyan}⑆${normal}"
+# SCM_HG_CHAR="${bold_red}☿${normal}"

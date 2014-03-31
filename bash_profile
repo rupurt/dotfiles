@@ -1,17 +1,6 @@
 # vim:ft=sh:
 
-# modify the prompt to contain git branch name if applicable
-parse_git_branch () {
-  git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# (git::\1)#'
-}
-
-BLACK="\[\033[0;38m\]"
-RED="\[\033[0;31m\]"
-RED_BOLD="\[\033[01;31m\]"
-BLUE="\[\033[01;34m\]"
-GREEN="\[\033[0;32m\]"
-
-export PS1="$BLACK[\u@$RED\h $GREEN\w$RED_BOLD\$(parse_git_branch)$BLACK] "
+[[ -f ~/.bash_prompt ]] && source ~/.bash_prompt
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
