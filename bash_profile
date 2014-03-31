@@ -46,15 +46,18 @@ if [ -d "$HOME/.rbenv" ]; then
 fi
 
 [ -d ~/bin ] && export PATH=~/bin:"$PATH"
-export PATH="$PATH:$HOME/.rbenv/bin"
-export PATH="$PATH:/usr/local/bin:/opt/git/bin:/usr/local/sbin"
-export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# Postgres
-export PATH=$PATH:/usr/local/pgsql/bin
+# Homebrew
+export PATH="/usr/local/bin:$PATH"
+
+# Git
+export PATH="/opt/git/bin:$PATH"
 
 # Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Postgres
+export PATH="/usr/local/pgsql/bin:$PATH"
 
 # load dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
