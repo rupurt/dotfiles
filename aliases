@@ -22,5 +22,9 @@ alias rg='rails g'
 alias migrate='rake db:migrate db:test:prepare'
 alias rbgrep="grep --include='*.rb' $*"
 
+# Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
