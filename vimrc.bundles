@@ -60,6 +60,7 @@ Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'epmatsw/ag.vim'
 Bundle 'Peeja/vim-cdo'
+Bundle 'folke/AutoTag'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

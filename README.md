@@ -146,3 +146,12 @@ sj = join multiple lines into a one liner
 <command>r = run current spec + line in iTerm
 <command>R = run current spec file in iTerm
 ```
+
+### ctags
+*requires ctags installed*
+*recommend use of gem-ctags for ruby*
+```
+<ctrl>] = find first tag match
+<ctrl>\ = find next tag match
+,rt = regenerate tags file
+```

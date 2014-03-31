@@ -163,13 +163,12 @@ endfunction
 
 " CTAGS
 "
-let g:Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let g:rails_ctags_arguments='--exclude=".git" --exclude="log"'
 
-" TODO: adjust for rbenv or chruby
-" ctags again with gemhome added
-" map <leader>rt :!/usr/local/bin/ctags -R --exclude=.git --exclude=log * `echo ~/code/schoolkeep/`/*<CR>
-" map <leader>rT :!rdoc -f tags -o tags * `echo ~/code/schoolkeep/` --exclude=.git --exclude=log
-
-map <leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <leader>rt :!ctags --extra=+f --exclude=.git --exclude=log --exclude=doc -R *<CR><CR>
 map <C-\> :tnext<CR>
+
+" AutoTag
+let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
+
+" Rails.vim
+let g:rails_ctags_arguments='--exclude=".git" --exclude="log" --exclude="doc"'
