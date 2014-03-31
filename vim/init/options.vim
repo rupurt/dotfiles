@@ -9,12 +9,15 @@ set numberwidth=4
 set nowrap
 
 set wildmode=list:longest,list:full
+set wildignore+=*vim/backups*
+set wildignore+=*DS_Store*
 set wildignore+=tags
 set wildignore+=tmp/**
-set wildignore+=public/uploads/**
-set wildignore+=public/images/**
-set wildignore+=vendor/**
-set wildignore+=.git,*.rbc,*.class,.svn,*.png
+set wildignore+=log/**
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=.git,*.rbc,*.class,.svn,*.png,*.jpg,*.gif
 
 " whitespace stuff
 " set list listchars=tab:\ \ ,trail:·
