@@ -8,7 +8,10 @@ set number
 set numberwidth=4
 set nowrap
 
-set wildmode=list:longest,list:full
+" completion sources: (current file, loaded buffers, unloaded buffers, tags)
+set complete=.,b,u,]
+
+set wildmode=longest,list:longest
 set wildignore+=*vim/backups*
 set wildignore+=*DS_Store*
 set wildignore+=tags
