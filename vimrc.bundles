@@ -21,6 +21,7 @@ Bundle 'tpope/vim-sensible'
 "
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'itchyny/lightline.vim'
 
 "
 " Rails & co.
