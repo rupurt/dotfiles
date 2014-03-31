@@ -47,8 +47,8 @@ fi
 
 [ -d ~/bin ] && export PATH=~/bin:"$PATH"
 export PATH="$PATH:$HOME/.rbenv/bin"
-export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:/usr/local/bin:/opt/git/bin:/usr/local/sbin"
+export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Postgres
 export PATH=$PATH:/usr/local/pgsql/bin
