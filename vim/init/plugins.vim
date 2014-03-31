@@ -74,10 +74,11 @@ nmap ss :SplitjoinSplit<cr>
 nmap sj :SplitjoinJoin<cr>
 
 
-" Vim iTerm Rspec
+" Vim Rspec
 "
-map <D-R> :RunItermSpec<cr>
-map <D-r> :RunItermSpecLine<cr>
+let g:rspec_runner = "os_x_iterm"
+map <D-R> :call RunCurrentSpecFile()<cr>
+map <D-r> :call RunNearestSpec()<cr>
 
 
 " Lightline

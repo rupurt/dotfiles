@@ -30,7 +30,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tpope/vim-abolish'
-Bundle 'skwp/vim-iterm-rspec'
+Bundle 'thoughtbot/vim-rspec'
 
 "
 " File Support
