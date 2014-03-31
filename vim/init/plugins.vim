@@ -74,6 +74,12 @@ nmap ss :SplitjoinSplit<cr>
 nmap sj :SplitjoinJoin<cr>
 
 
+" Vim iTerm Rspec
+"
+map <D-R> :RunItermSpec<cr>
+map <D-r> :RunItermSpecLine<cr>
+
+
 " Lightline
 "
 :set noshowmode " mode is displayed by lightline

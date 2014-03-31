@@ -139,3 +139,10 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ss = split a one liner into multiple lines
 sj = join multiple lines into a one liner
 ```
+
+### Vim iTerm Rspec
+*MacVIM only*
+```
+<command>r = run current spec + line in iTerm
+<command>R = run current spec file in iTerm
+```
