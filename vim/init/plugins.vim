@@ -65,6 +65,15 @@ let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 let g:vim_markdown_folding_disabled=1
 
 
+" Splitjoin
+"
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+
+nmap ss :SplitjoinSplit<cr>
+nmap sj :SplitjoinJoin<cr>
+
+
 " Lightline
 "
 :set noshowmode " mode is displayed by lightline

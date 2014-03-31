@@ -133,3 +133,9 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ```
 <ctrl>k = paste over, keep original buffer
 ```
+
+### Splitjoin
+```
+ss = split a one liner into multiple lines
+sj = join multiple lines into a one liner
+```
