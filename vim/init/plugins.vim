@@ -30,6 +30,27 @@ nmap <leader>/  <Plug>Commentary
 nmap <leader>// <Plug>CommentaryLine
 
 
+" AG
+"
+function! AgGrep()
+  let command = "ag ".expand("<cword>")
+  cexpr system(command)
+  cw
+endfunction
+
+function! AgVisual()
+  normal gv"xy
+  let command = "ag ".@x
+  cexpr system(command)
+  cw
+endfunction
+
+" AgGrep current word
+map <leader>a :call AgGrep()<CR>
+" AgVisual current selection
+vmap <leader>a :call AgVisual()<CR>
+
+
 " CTRL-P
 "
 nnoremap <silent> <leader>f :CtrlP<CR>

@@ -63,6 +63,7 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ,f = fuzzy file find (via CTRL-P)
 ,b = fuzzy open buffer find (via CTRL-P)
 :Ag <search_term> = project pattern search (use Ag, install via brew)
+,a = call Ag using the current work under the cursor (or visually selected)
 ```
 
 ## General
