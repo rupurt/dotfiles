@@ -9,14 +9,14 @@ Clone repo:
 git clone git@github.com:attack/dotfiles.git
 ```
 
-### using brew + rcm
+### using brew + rcm (preferred)
 
 Install [rcm](https://github.com/thoughtbot/rcm)
 ```sh
 brew bundle dotfiles/Brewfile
 ```
 
-Install dotfile:
+Install dotfiles:
 ```sh
 rcup -d dotfiles -x README.md -x install -x Brewfile -x LICENSE
 ```
@@ -27,6 +27,16 @@ Run install:
 ```sh
 bash dotfiles/install
 ```
+
+## Updating
+
+Update Repo:
+```sh
+cd <your-dotfile-location>
+git pull
+```
+
+Then just re-run the install steps, as they update as well.
 
 ## Make your own cuctomizations
 
@@ -42,12 +52,6 @@ Put your customizations in dotfiles appended with `.local`:
 ## Credits
 
 Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles)
-
-## Vim Cheatsheet
-### macvim
-
-- open vim
-- run ```:BundleInstall!```
 
 # Vim Command CheatSheet
 
@@ -140,11 +144,11 @@ ss = split a one liner into multiple lines
 sj = join multiple lines into a one liner
 ```
 
-### Vim iTerm Rspec
+### Vim Rspec
 *MacVIM only*
 ```
-<command>r = run current spec + line in iTerm
-<command>R = run current spec file in iTerm
+<command>r = run current spec + line in iTerm (last tab)
+<command>R = run current spec file in iTerm (last tab)
 ```
 
 ### ctags
