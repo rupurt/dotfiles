@@ -122,8 +122,7 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 
 ### Commentary
 ```
-/ = toggle comment
-// = toggle comment
+,/ = toggle comment
 ```
 
 ### CTRL-P

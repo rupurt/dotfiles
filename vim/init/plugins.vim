@@ -25,9 +25,8 @@ map \| :NERDTreeFind<CR>
 
 " VIM-COMMENTARY
 "
-xmap <leader>/  <Plug>Commentary
-nmap <leader>/  <Plug>Commentary
-nmap <leader>// <Plug>CommentaryLine
+xmap <leader>/ <Plug>Commentary
+nmap <leader>/ <Plug>CommentaryLine
 
 
 " AG
