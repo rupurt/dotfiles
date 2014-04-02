@@ -69,8 +69,8 @@ let g:vim_markdown_folding_disabled=1
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
 
-nmap ss :SplitjoinSplit<cr>
-nmap sj :SplitjoinJoin<cr>
+nmap Ss :SplitjoinSplit<cr>
+nmap Sj :SplitjoinJoin<cr>
 
 
 " Vim Rspec
