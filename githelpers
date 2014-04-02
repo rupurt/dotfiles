@@ -14,7 +14,7 @@ function pretty_git_log() {
   sed -Ee 's/staging-release/STG/g' |
   sed -Ee 's/production-release/PROD/g' |
   sed -Ee 's/tag: /t:/g' |
-  awk -F '}' '{ cmd="date -j -f \"%a, %d %b %Y %T %z\" \""$2"\" \"+%Y-%b-%d %p\""; cmd | getline convdate; close(cmd); print $1 convdate $3}' |
+  awk -F '}' '{ if ($2 != "") { cmd="date -j -f \"%a, %d %b %Y %T %z\" \""$2"\" \"+%Y-%b-%d %p\""; cmd | getline convdate; close(cmd); print $1 convdate $3 } else { print $0 } }' |
   awk -F '{' "{ gsub(/ and /,\"-\",\$2); gsub(/[a-z ]+/,\"\",\$2); print \$0}" |
   less -EFXRS
 }
