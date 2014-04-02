@@ -76,7 +76,6 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ,v = veritical split
 ,h = horizontal split
 ,o = close all other windows in tab, except current
-,s = start search command
 ,n = rename file
 [<space> = addline above
 ]<space> = addline below
@@ -144,10 +143,10 @@ Sj = join multiple lines into a one liner
 ```
 
 ### Vim Rspec
-*MacVIM only*
 ```
-<command>r = run current spec + line in iTerm (last tab)
-<command>R = run current spec file in iTerm (last tab)
+<leader>t = run current spec + line in iTerm (last tab)
+<leader>s = run current spec file in iTerm (last tab)
+<leader>l = run last spec in iTerm (last tab)
 ```
 
 ### ctags

@@ -40,10 +40,6 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map Y y$
 map <silent> <leader>y :<C-u>silent '<,'>w !pbcopy<CR>
 
-" Search
-nmap <Leader>s  :%s/
-vmap <Leader>s  :s/
-
 " Copy current file path to system pasteboard.
 map <silent> <D-C> :let @* = expand("%")<CR>:echo "Copied: ".expand("%")<CR>
 map <leader>C :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%").":".line(".")<CR>
