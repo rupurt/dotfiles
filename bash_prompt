@@ -1,32 +1,5 @@
 # vim:ft=sh:
 
-parse_git_branch() {
-  git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# (\1)#'
-}
-
-parse_git_repo() {
-  basename `git rev-parse --show-toplevel`
-}
-
-git_repo_or_path() {
-  local repo=`git rev-parse --show-toplevel 2> /dev/null`
-  if [[ ! -e "${repo}" ]]; then
-    # TODO: this isn't as good as '\w' which include ~ for home
-    # local PathShort="\w"
-    echo -n $PWD
-  else
-    parse_git_repo
-  fi
-}
-
-function parse_git_dirty() {
-  if [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]]; then
-    echo 'DIRTY'
-  else
-    echo 'CLEAN'
-  fi
-}
-
 DULL=0
 BRIGHT=1
 
@@ -68,13 +41,88 @@ VIOLET="$ESC[${DULL};${FG_VIOLET}m"
 CYAN="$ESC[${DULL};${FG_CYAN}m"
 WHITE="$ESC[${DULL};${FG_WHITE}m"
 
-export PS1="$NORMAL--- \u@$BLUE\h $GREEN\$(git_repo_or_path)$RED\$(parse_git_branch)$RESET\n$ "
-
-# TODO
-# - http://www.gnu.org/software/bash/manual/bashref.html#Printing-a-Prompt
-# - would like indication of changes on branch
-# SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
-# SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
+GIT_DIRTY=" ${RED}✗${NORMAL}"
+GIT_CLEAN=" ${GREEN}✓${NORMAL}"
 # SCM_GIT_CHAR="${bold_green}±${normal}"
-# SCM_SVN_CHAR="${bold_cyan}⑆${normal}"
-# SCM_HG_CHAR="${bold_red}☿${normal}"
+
+git_repo_path() {
+  # memoize me
+  git rev-parse --show-toplevel
+}
+
+git_branch_name() {
+  git symbolic-ref HEAD 2>/dev/null
+}
+
+git_repo_name() {
+  basename `git_repo_path`
+}
+
+git_user_initials() {
+  git config user.initials
+}
+
+git_user_email() {
+  git config user.email
+}
+
+git_status() {
+  git status 2> /dev/null
+}
+
+git_sub_directoy() {
+  if is_git_repo; then
+    local repo_path=$(git_repo_path)
+    echo -ne ${PWD#$repo_path}
+  fi
+}
+
+is_git_repo() {
+  local repo_path=`git_repo_path 2> /dev/null`
+  if [[ ! -e "${repo_path}" ]]; then
+    false
+  else
+    true
+  fi
+}
+
+pretty_git_user() {
+  if is_git_repo; then
+    local initials=$(git_user_initials)
+    if [ -z $initials ]; then
+      local output=$(git_user_email)
+    else
+      local output=${initials}
+    fi
+
+    echo -ne "${CYAN}$output "
+  fi
+}
+
+pretty_git_repo_or_path() {
+  if is_git_repo; then
+    local repo_name=$(git_repo_name)
+    local repo_sub_directory=$(git_sub_directoy)
+    local output="${GREEN}$repo_name$repo_sub_directory"
+  else
+    local output="${GREEN}$PWD"
+  fi
+  echo -ne "${GREEN}$output"
+}
+
+pretty_git_status() {
+  if [[ $(git_status | tail -n1) != *"working directory clean"* ]]; then
+    echo -ne "${GIT_DIRTY}"
+  else
+    echo -ne "${GIT_CLEAN}"
+  fi
+}
+
+pretty_git_branch_name() {
+  if is_git_repo; then
+    local repo_branch_name="$(git_branch_name)" || "(unnamed branch)"
+    echo -ne " ${RED}(${repo_branch_name##refs/heads/}$(pretty_git_status)${RED})"
+  fi
+}
+
+export PS1="$NORMAL--- \u@$BLUE\h \$(pretty_git_user)\$(pretty_git_repo_or_path)\$(pretty_git_branch_name)$RESET\n$ "
