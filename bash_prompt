@@ -1,9 +1,7 @@
 # vim:ft=sh:
 
 DULL=0
-BRIGHT=1
 
-FG_BLACK=30
 FG_RED=31
 FG_GREEN=32
 FG_YELLOW=33
@@ -13,16 +11,6 @@ FG_CYAN=36
 FG_WHITE=37
 
 FG_NULL=00
-
-BG_BLACK=40
-BG_RED=41
-BG_GREEN=42
-BG_YELLOW=43
-BG_BLUE=44
-BG_VIOLET=45
-BG_CYAN=46
-BG_WHITE=47
-
 BG_NULL=00
 
 ##
@@ -32,97 +20,53 @@ ESC="\033"
 NORMAL="$ESC[m"
 RESET="$ESC[${DULL};${FG_WHITE};${BG_NULL}m"
 
-BLACK="$ESC[${DULL};${FG_BLACK}m"
 RED="$ESC[${DULL};${FG_RED}m"
 GREEN="$ESC[${DULL};${FG_GREEN}m"
 YELLOW="$ESC[${DULL};${FG_YELLOW}m"
 BLUE="$ESC[${DULL};${FG_BLUE}m"
 VIOLET="$ESC[${DULL};${FG_VIOLET}m"
 CYAN="$ESC[${DULL};${FG_CYAN}m"
-WHITE="$ESC[${DULL};${FG_WHITE}m"
 
-GIT_DIRTY=" ${RED}✗${NORMAL}"
-GIT_CLEAN=" ${GREEN}✓${NORMAL}"
-# SCM_GIT_CHAR="${bold_green}±${normal}"
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+# Explicitly unset color (default anyhow). Use 1 to set it.
+GIT_PS1_SHOWCOLORHINTS=
+GIT_PS1_DESCRIBE_STYLE="branch"
 
-git_repo_path() {
-  # memoize me
-  git rev-parse --show-toplevel
-}
+git_or_pwd() {
+  local _git_ps1="$(__git_ps1 "%s")"
 
-git_branch_name() {
-  git symbolic-ref HEAD 2>/dev/null
-}
+  if [[ -n ${_git_ps1} ]]; then
+    local _git_repo_path=`git rev-parse --show-toplevel 2> /dev/null`
+    local _git_repo_name=`basename "${_git_repo_path}"`
+    local _git_branch_name=`echo -n "${_git_ps1}" | sed 's/[\*\+\$]//g' | sed 's/ $//g'`
+    local _git_user_initials=`git config user.initials`
+    local _git_user_email=`git config user.email`
+    local _git_sha=`git rev-parse --short HEAD 2>/dev/null`
 
-git_repo_name() {
-  basename `git_repo_path`
-}
-
-git_user_initials() {
-  git config user.initials
-}
-
-git_user_email() {
-  git config user.email
-}
-
-git_status() {
-  git status 2> /dev/null
-}
-
-git_sub_directoy() {
-  if is_git_repo; then
-    local repo_path=$(git_repo_path)
-    echo -ne ${PWD#$repo_path}
-  fi
-}
-
-is_git_repo() {
-  local repo_path=`git_repo_path 2> /dev/null`
-  if [[ ! -e "${repo_path}" ]]; then
-    false
-  else
-    true
-  fi
-}
-
-pretty_git_user() {
-  if is_git_repo; then
-    local initials=$(git_user_initials)
-    if [ -z $initials ]; then
-      local output=$(git_user_email)
+    if [ -z $_git_user_initials ]; then
+      local git_user="${_git_user_email}"
     else
-      local output=${initials}
+      local git_user="${_git_user_initials}"
+    fi
+    local pretty_git_user=" ${CYAN}${git_user}"
+
+    local repo_sub_directory=${PWD#$_git_repo_path}
+    local git_repo="${_git_repo_name}${repo_sub_directory}"
+    local pretty_git_repo=" ${YELLOW}${git_repo}"
+
+    if echo -n "${_git_ps1}" | grep -qe '\*\|\+\|\$'; then
+      local pretty_git_branch_name=" ${RED}[${_git_branch_name} ${_git_sha}]"
+    else
+      local pretty_git_branch_name=" ${GREEN}[${_git_branch_name} ${_git_sha}]"
     fi
 
-    echo -ne "${CYAN}$output "
-  fi
-}
+    echo -ne "${pretty_git_user}${pretty_git_repo}${pretty_git_branch_name}"
 
-pretty_git_repo_or_path() {
-  if is_git_repo; then
-    local repo_name=$(git_repo_name)
-    local repo_sub_directory=$(git_sub_directoy)
-    local output="${GREEN}$repo_name$repo_sub_directory"
   else
-    local output="${GREEN}$PWD"
-  fi
-  echo -ne "${GREEN}$output"
-}
-
-pretty_git_status() {
-  if [[ $(git_status | tail -n1) != *"working directory clean"* ]]; then
-    echo -ne "${GIT_DIRTY}"
-  else
-    echo -ne "${GIT_CLEAN}"
+    local _pwd=`printf "%s" $(echo -n $PWD | sed "s:$HOME:~:")`
+    echo -ne " ${YELLOW}${_pwd}"
   fi
 }
 
-pretty_git_branch_name() {
-  if is_git_repo; then
-    local repo_branch_name="$(git_branch_name)" || "(unnamed branch)"
-    echo -ne " ${RED}(${repo_branch_name##refs/heads/}$(pretty_git_status)${RED})"
-  fi
-}
-
-export PS1="$NORMAL--- \u@$BLUE\h \$(pretty_git_user)\$(pretty_git_repo_or_path)\$(pretty_git_branch_name)$RESET\n$ "
+export PS1="${NORMAL}--- \u@${BLUE}\h\$(git_or_pwd)${RESET}\n$ "
