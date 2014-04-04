@@ -40,6 +40,10 @@ Then just re-run the install steps, as they update as well.
 
 ## Make your own cuctomizations
 
+Put your project sharable customizations in dotfiles appended with `.shared`:
+
+* `~/.aliases.shared`
+
 Put your customizations in dotfiles appended with `.local`:
 
 * `~/.aliases.local`
