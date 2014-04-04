@@ -26,5 +26,8 @@ alias rbgrep="grep --include='*.rb' $*"
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
+# Include shared aliases
+[[ -f ~/.aliases.shared ]] && source ~/.aliases.shared
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
