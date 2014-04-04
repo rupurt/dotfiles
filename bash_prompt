@@ -39,7 +39,7 @@ git_or_pwd() {
   if [[ -n ${_git_ps1} ]]; then
     local _git_repo_path=`git rev-parse --show-toplevel 2> /dev/null`
     local _git_repo_name=`basename "${_git_repo_path}"`
-    local _git_branch_name=`echo -n "${_git_ps1}" | sed 's/[\*\+\$]//g' | sed 's/ $//g'`
+    local _git_branch_name=`echo -n "${_git_ps1}" | sed 's/[\*\+\$]//g' | sed 's/ $//g' | sed 's/ |/|/g'`
     local _git_user_initials=`git config user.initials`
     local _git_user_email=`git config user.email`
     local _git_sha=`git rev-parse --short HEAD 2>/dev/null`
