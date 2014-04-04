@@ -63,4 +63,4 @@ git_or_pwd() {
   fi
 }
 
-export PS1="${NORMAL}--- \u@${BLUE}\h\$(git_or_pwd)${RESET}\n$ "
+export PS1="${YELLOW}--- ${NORMAL}\u@${BLUE}\h\$(git_or_pwd)${RESET}\n$ "
