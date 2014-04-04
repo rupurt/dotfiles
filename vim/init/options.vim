@@ -15,10 +15,11 @@ set wildmode=longest,list:longest
 set wildignore+=*vim/backups*
 set wildignore+=*DS_Store*
 set wildignore+=tags
-set wildignore+=tmp/**
-set wildignore+=log/**
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
+set wildignore+=*/public/assets/**
+set wildignore+=*/tmp/**
+set wildignore+=*/log/**
+set wildignore+=*/vendor/rails/**
+set wildignore+=*/vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=.git,*.rbc,*.class,.svn,*.png,*.jpg,*.gif
 
