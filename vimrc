@@ -13,6 +13,11 @@ endif
 " Source initialization files
 runtime! init/**.vim
 
+" Shared vim settings
+if filereadable($HOME . "/.vimrc.shared")
+  source ~/.vimrc.shared
+endif
+
 " Local vim settings
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local

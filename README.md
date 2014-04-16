@@ -46,11 +46,14 @@ Put your project sharable customizations in dotfiles appended with `.shared`:
 
 Put your customizations in dotfiles appended with `.local`:
 
+* `~/.aliases.shared`
 * `~/.aliases.local`
 * `~/.bash_profile.local`
 * `~/.gitconfig.local`
 * `~/.gvimrc.local`
+* `~/.vimrc.shared`
 * `~/.vimrc.local`
+* `~/.vimrc.bundles.shared`
 * `~/.vimrc.bundles.local`
 
 ## Credits

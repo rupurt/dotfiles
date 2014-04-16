@@ -64,6 +64,10 @@ Bundle 'folke/AutoTag'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-bundler'
 
+if filereadable(expand("~/.vimrc.bundles.shared"))
+  source ~/.vimrc.bundles.shared
+endif
+
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif
