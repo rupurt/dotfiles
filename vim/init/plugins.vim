@@ -108,10 +108,11 @@ endfunction
 
 function! MyFilename()
   let fname = expand('%:t')
+  let fullname = split(expand('%:p'), getcwd() . '/')[0]
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ fname =~ 'NERD_tree' ? '' :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != fullname ? fullname : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
