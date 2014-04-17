@@ -61,7 +61,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'epmatsw/ag.vim'
 Bundle 'Peeja/vim-cdo'
 Bundle 'folke/AutoTag'
-Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-bundler'
 
 if filereadable(expand("~/.vimrc.bundles.shared"))

@@ -108,18 +108,16 @@ endfunction
 
 function! MyFilename()
   let fname = expand('%:t')
-  let tagname = tagbar#currenttag(' - %s','', 'f')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
         \ fname =~ 'NERD_tree' ? '' :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fname ? fname . tagname : '[No Name]') .
+        \ ('' != fname ? fname : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
   try
-    if expand('%:t') !~? 'Tagbar\|NERD' && exists('*fugitive#head')
+    if expand('%:t') !~? 'NERD' && exists('*fugitive#head')
       let mark = ''
       let _ = fugitive#head()
       return strlen(_) ? mark._ : ''
@@ -131,8 +129,7 @@ endfunction
 
 function! MyMode()
   let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
+  return fname == 'ControlP' ? 'CtrlP' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
@@ -164,12 +161,6 @@ function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
 
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
 
 " CTAGS
 "
