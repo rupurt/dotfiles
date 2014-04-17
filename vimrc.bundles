@@ -17,9 +17,8 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-sensible'
 
 "
-" Colourschemes
+" Look & Feel
 "
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'itchyny/lightline.vim'
 
