@@ -81,10 +81,6 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" add breathing room
-noremap [<space> :call append(line(".")-1, repeat([''], 1))<CR>
-noremap ]<space> :call append(line("."), repeat([''], 1))<CR>
-
 " Smart Tab completion (credit: garybernhardt)
 function! InsertTabWrapper()
     let col = col('.') - 1
