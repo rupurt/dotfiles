@@ -88,13 +88,16 @@ let g:lightline = {
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'fugitive', 'filename' ],
-  \             ['ctrlpmark'] ]
+  \             [ 'ctrlpmark' ] ]
   \ },
   \ 'component_function': {
   \   'fugitive': 'MyFugitive',
   \   'filename': 'MyFilename',
   \   'mode': 'MyMode',
-  \   'ctrlpmark': 'CtrlPMark'
+  \   'ctrlpmark': 'CtrlPMark',
+  \   'filetype': 'MyFiletype',
+  \   'fileencoding': 'MyFileencoding',
+  \   'fileformat': 'MyFileformat'
   \ }
   \ }
 
@@ -109,10 +112,11 @@ endfunction
 function! MyFilename()
   let fname = expand('%:t')
   let fullname = split(expand('%:p'), getcwd() . '/')[0]
+  let displayname = winwidth(0) > 42 ? fullname : fname
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ fname =~ 'NERD_tree' ? '' :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fullname ? fullname : '[No Name]') .
+        \ ('' != displayname ? displayname : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
@@ -160,6 +164,18 @@ endfunction
 
 function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 80 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 90 ? &fileformat : ''
 endfunction
 
 
