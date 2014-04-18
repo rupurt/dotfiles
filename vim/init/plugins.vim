@@ -111,7 +111,8 @@ endfunction
 
 function! MyFilename()
   let fname = expand('%:t')
-  let fullname = fname != '' ? split(expand('%:p'), getcwd() . '/')[0] : ''
+  let fullname_list = split(expand('%:p'), getcwd() . '/')
+  let fullname = fname != '' && len(fullname_list) > 0 ? fullname_list[0] : ''
   let displayname = winwidth(0) > 42 ? fullname : fname
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ fname =~ 'NERD_tree' ? '' :
