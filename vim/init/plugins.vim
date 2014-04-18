@@ -167,15 +167,18 @@ function! CtrlPStatusFunc_2(str)
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  return &filetype == 'nerdtree' ? '' :
+        \ winwidth(0) > 70 ? strlen(&filetype) ? &filetype : 'no ft' : ''
 endfunction
 
 function! MyFileencoding()
-  return winwidth(0) > 80 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  return &filetype == 'nerdtree' ? '' :
+        \ winwidth(0) > 80 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 90 ? &fileformat : ''
+  return &filetype == 'nerdtree' ? '' :
+        \ winwidth(0) > 90 ? &fileformat : ''
 endfunction
 
 
