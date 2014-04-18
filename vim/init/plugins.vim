@@ -192,4 +192,4 @@ map <C-\> :tnext<CR>
 let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
 
 " Rails.vim
-let g:rails_ctags_arguments='--exclude=".git" --exclude="log" --exclude="doc"'
+let g:rails_ctags_arguments='--exclude=".git" --exclude="log" --exclude="doc" --exclude="spec/javascripts/helpers"'
