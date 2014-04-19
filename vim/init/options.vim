@@ -38,6 +38,8 @@ set hidden         " allow hidden, unsaved buffers
 set splitbelow     " add new window towards right
 set splitright     " add new window towards bottom
 set scrolloff=3    " scroll when the cursor is 3 lines from bottom
+set sidescroll=1
+set sidescrolloff=5
 set cursorline     " highlight current line
 
 " Turn folding off for real, hopefully
