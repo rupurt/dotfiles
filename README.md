@@ -149,11 +149,21 @@ Ss = split a one liner into multiple lines
 Sj = join multiple lines into a one liner
 ```
 
-### Vim Rspec
+### Vim Rspec + dispatch
+using vim-dispatch `Dispatch`:
+this will capture results and display in quickfix
 ```
-<leader>t = run current spec + line in iTerm (last tab)
-<leader>s = run current spec file in iTerm (last tab)
-<leader>l = run last spec in iTerm (last tab)
+<leader>t = run current spec + line in iTerm
+<leader>s = run current spec file in iTerm
+<leader>l = run last spec in iTerm
+```
+
+using vim-dispatch `Start`:
+this will not capture results
+```
+<leader>dt = run current spec + line in iTerm
+<leader>ds = run current spec file in iTerm
+<leader>dl = run last spec in iTerm
 ```
 
 ### ctags

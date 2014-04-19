@@ -73,12 +73,39 @@ nmap Ss :SplitjoinSplit<cr>
 nmap Sj :SplitjoinJoin<cr>
 
 
-" RSpec.vim mappings
+" vim-dispatch + RSpec.vim
 "
-let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "Dispatch rspec {spec}"
 map <leader>t :call RunCurrentSpecFile()<CR>
 map <leader>s :call RunNearestSpec()<CR>
 map <leader>l :call RunLastSpec()<CR>
+
+" non-capture dispatch
+let g:debug_rspec_command = "Start rspec {spec}"
+function! StartCurrentSpecFile()
+  let previous_command = g:rspec_command
+  let g:rspec_command = g:debug_rspec_command
+  call RunCurrentSpecFile()
+  let g:rspec_command = previous_command
+endfunction
+
+function! StartNearestSpec()
+  let previous_command = g:rspec_command
+  let g:rspec_command = g:debug_rspec_command
+  call RunNearestSpec()
+  let g:rspec_command = previous_command
+endfunction
+
+function! StartLastSpec()
+  let previous_command = g:rspec_command
+  let g:rspec_command = g:debug_rspec_command
+  call RunLastSpec()
+  let g:rspec_command = previous_command
+endfunction
+
+map <leader>dt :call StartCurrentSpecFile()<CR>
+map <leader>ds :call StartNearestSpec()<CR>
+map <leader>dl :call StartLastSpec()<CR>
 
 
 " Lightline
