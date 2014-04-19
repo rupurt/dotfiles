@@ -65,16 +65,16 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ## Rails
 ```
 ,p = promote assignment to let
-,S = run nearest test in current file
-,A = run all tests in current file
 ```
 
 ## Discovery
 ```
-,f = fuzzy file find (via CTRL-P)
-,b = fuzzy open buffer find (via CTRL-P)
 :Ag <search_term> = project pattern search (use Ag, install via brew)
 ,a = call Ag using the current work under the cursor (or visually selected)
+,f = fuzzy file find (via CTRL-P)
+,b = fuzzy open buffer find (via CTRL-P)
+,F = fuzzy file find after resetign cache
+<f5> = while in fuzzy finder, refresh cache
 ```
 
 ## General
@@ -84,9 +84,10 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ,h = horizontal split
 ,o = close all other windows in tab, except current
 ,n = rename file
+,qo = open quickfix
+,qc = close quickfix
 [<space> = addline above
 ]<space> = addline below
-,n = autocompelte
 <tab> = autocomplete (except when prefixed with whitespace)
 <tab> = <tab> (only when prefixed with whitespace)
 ```
@@ -94,7 +95,6 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ```
 ,rv = reload vimrc
 ,e = open edit command with current path filled in
-,te = open tab edit command with current path filled in
 ```
 
 ### Visual mode specific
@@ -127,13 +127,6 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ### Commentary
 ```
 ,/ = toggle comment
-```
-
-### CTRL-P
-*also see Discovery*
-```
-,F = fuzzy file find after resetign cache
-<f5> = while in fuzzy finder, refresh cache
 ```
 
 ### regreplop
