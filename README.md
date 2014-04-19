@@ -95,8 +95,6 @@ Heavy influence from [thoughtbot dotfiles](https://github.com/thoughtbot/dotfile
 ,rv = reload vimrc
 ,e = open edit command with current path filled in
 ,te = open tab edit command with current path filled in
-<ctrl>-n = next buffer
-<ctrl>-p = previous buffer
 ```
 
 ### Visual mode specific

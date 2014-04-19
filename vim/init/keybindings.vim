@@ -15,10 +15,6 @@ cabbrev Tabc tabc
 " Make current window the only one (within tab)
 :noremap <leader>o :only<CR>
 
-" Buffer next,previous (ctrl-{n,p})
-:noremap <c-N> :bn<CR>
-:noremap <c-P> :bp<CR>
-
 " Move between screens
 nmap <C-j>      <C-w>j
 nmap <C-k>      <C-w>k
