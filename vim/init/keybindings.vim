@@ -15,22 +15,13 @@ cabbrev Tabc tabc
 " Make current window the only one (within tab)
 :noremap <leader>o :only<CR>
 
-" Move between screens
-nmap <C-j>      <C-w>j
-nmap <C-k>      <C-w>k
-nmap <C-h>      <C-w>h
-nmap <C-l>      <C-w>l
-
-" jj - The most intuitive way to get out of insert mode. Like a boss!
-imap jj <Esc>
-
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Make Y consistent with D and C.
 map Y y$
@@ -46,10 +37,6 @@ vmap <s-tab> <gv
 
 " reload .vimrc
 map <leader>rv :source ~/.vimrc<CR>
-
-" Scroll faster.
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
 
 " Previous/next quickfix file listings (e.g. search results)
 map <M-D-Down>  :cn<CR>
