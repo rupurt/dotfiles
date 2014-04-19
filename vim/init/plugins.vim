@@ -1,11 +1,11 @@
-" VIM-SURROUND
+" vim-surround
 "
 " Add $ as a jQuery surround, _ for Underscore.js
 autocmd FileType javascript let b:surround_36 = "$(\r)"
                         \ | let b:surround_95 = "_(\r)"
 
-" VIM-FUGITIVE
-map <leader>g   :Gblame<CR>
+" vim-fugitive
+map <leader>g :Gblame<CR>
 
 
 " NERDTREE
@@ -23,13 +23,13 @@ map \ :NERDTreeToggle<CR>
 map \| :NERDTreeFind<CR>
 
 
-" VIM-COMMENTARY
+" vim-commentary
 "
 xmap <leader>/ <Plug>Commentary
 nmap <leader>/ <Plug>CommentaryLine
 
 
-" AG
+" Ag
 "
 function! AgGrep()
   let command = "ag ".expand("<cword>")
@@ -50,7 +50,7 @@ map <leader>a :call AgGrep()<CR>
 vmap <leader>a :call AgVisual()<CR>
 
 
-" CTRL-P
+" ctrl-p
 "
 nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <silent> <leader>F :ClearCtrlPCache<CR>\|:CtrlP<CR>
@@ -108,16 +108,20 @@ map <leader>ds :call StartNearestSpec()<CR>
 map <leader>dl :call StartLastSpec()<CR>
 
 
-" CTAGS
+" ctags
 "
 
 map <leader>rt :!ctags --extra=+f --exclude=.git --exclude=log --exclude=doc -R *<CR><CR>
 map <C-\> :tnext<CR>
 
+
 " AutoTag
+"
 let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
 
+
 " Rails.vim
+"
 let g:rails_ctags_arguments='--exclude=".git" --exclude="log" --exclude="doc" --exclude="spec/javascripts/helpers"'
 
 
