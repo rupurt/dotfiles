@@ -221,3 +221,46 @@ let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
 
 " Rails.vim
 let g:rails_ctags_arguments='--exclude=".git" --exclude="log" --exclude="doc" --exclude="spec/javascripts/helpers"'
+
+
+" MISC
+"
+
+" File Renaming (credit: garybernhardt)
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'))
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
+" Smart Tab completion (credit: garybernhardt)
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+" Promote to let (credit: garybernhardt)
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+  " :normal! <<
+  " :normal! ilet(:
+  " :normal! f 2cl) {
+  " :normal! A }
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+map <leader>p :PromoteToLet<cr>
