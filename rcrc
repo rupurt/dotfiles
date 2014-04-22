@@ -1,2 +1,2 @@
-EXCLUDES="README.md LICENSE Brewfile install"
+EXCLUDES="README.md LICENSE Brewfile install tags"
 DOTFILES_DIRS="$HOME/dotfiles"
