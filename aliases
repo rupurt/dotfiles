@@ -19,7 +19,7 @@ alias giv='gem install -v'
 alias rc='rails c'
 alias rs='rails s'
 alias rg='rails g'
-alias migrate='rake db:migrate db:test:prepare'
+alias migrate='rake db:migrate'
 alias rbgrep="grep --include='*.rb' $*"
 
 # Finder
