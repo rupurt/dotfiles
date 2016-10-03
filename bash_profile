@@ -28,17 +28,6 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 export GIT_EDITOR=$VISUAL
 
-# CHRUBY
-if [ -d "/usr/local/share/chruby" ]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-
-# RBENV
-elif [ -d "$HOME/.rbenv" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - --no-rehash)"
-fi
-
 [ -d ~/bin ] && export PATH=~/bin:"$PATH"
 
 # Git
@@ -52,6 +41,17 @@ export PATH="/usr/local/pgsql/bin:$PATH"
 
 # load dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
+
+# CHRUBY
+if [ -d "/usr/local/share/chruby" ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+
+# RBENV
+elif [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - --no-rehash)"
+fi
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
