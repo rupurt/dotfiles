@@ -23,3 +23,5 @@
   ff = only
 [include]
   path = .gitconfig.local
+[credential]
+	helper = osxkeychain
