@@ -41,9 +41,6 @@ fi
 
 [ -d ~/bin ] && export PATH=~/bin:"$PATH"
 
-# Homebrew
-export PATH="/usr/local/bin:$PATH"
-
 # Git
 export PATH="/opt/git/bin:$PATH"
 
